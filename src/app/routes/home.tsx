@@ -20,14 +20,17 @@ export default function Home() {
       <div className="mt-[length:var(--space-7)] grid grid-cols-1 gap-[length:var(--space-6)] sm:grid-cols-2 md:grid-cols-3">
         {actors.map((actor) => (
           <Link key={actor.slug} to={`/${actor.slug}`} className="group block">
-            <img
-              src={actor.photos.headshot.src}
-              width={actor.photos.headshot.width}
-              height={actor.photos.headshot.height}
-              alt={actor.photos.headshot.alt}
-              className="w-full object-cover"
-              style={{ aspectRatio: "3 / 4", borderRadius: "var(--radius-md)" }}
-            />
+            <div className="relative overflow-hidden" style={{ borderRadius: "var(--radius-md)" }}>
+              <img
+                src={actor.photos.headshot.src}
+                width={actor.photos.headshot.width}
+                height={actor.photos.headshot.height}
+                alt={actor.photos.headshot.alt}
+                className="hover-scale w-full object-cover"
+                style={{ aspectRatio: "3 / 4" }}
+              />
+              <span aria-hidden="true" className="accent-underline" />
+            </div>
             <div className="mt-[length:var(--space-3)] font-medium" style={{ fontSize: "var(--text-lg)" }}>
               {actor.name}
             </div>

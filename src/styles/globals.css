@@ -78,3 +78,62 @@ body {
     transform: scale(0.97);
   }
 }
+
+/*
+ * Hover/press micro-interactions on already-interactive elements (home grid
+ * cards, the showreel play button). Hover triggers are gated to real
+ * pointers - on touch, tapping a card would otherwise leave a phantom
+ * :hover stuck until the user taps elsewhere. :focus-visible/:focus-within
+ * stay ungated so keyboard users get the same cue without a pointer at all.
+ */
+.hover-scale {
+  transform-origin: center;
+  transition: transform var(--dur-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .hover-scale {
+    transform: scale(1.03);
+  }
+}
+.group:focus-visible .hover-scale,
+.group:focus-within .hover-scale {
+  transform: scale(1.03);
+}
+
+.accent-underline {
+  position: absolute;
+  inset-inline: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--c-accent);
+  transform-origin: left;
+  transform: scaleX(0);
+  opacity: 0;
+  transition:
+    transform var(--dur-base) var(--ease-out),
+    opacity var(--dur-base) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .group:hover .accent-underline {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+.group:focus-visible .accent-underline,
+.group:focus-within .accent-underline {
+  transform: scaleX(1);
+  opacity: 1;
+}
+
+.video-play-trigger {
+  transform-origin: center;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .video-play-trigger:hover {
+    transform: scale(1.08);
+  }
+}
+.video-play-trigger:active {
+  transform: scale(0.96);
+}

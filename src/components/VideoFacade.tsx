@@ -60,7 +60,7 @@ export function VideoFacade({ youtubeId, poster, title }: VideoFacadeProps) {
         style={{ background: "color-mix(in srgb, var(--c-base) 30%, transparent)" }}
       >
         <span
-          className="flex items-center justify-center rounded-full"
+          className="video-play-trigger flex items-center justify-center rounded-full"
           style={{
             width: "4rem",
             height: "4rem",
