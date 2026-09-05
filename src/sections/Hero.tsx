@@ -12,7 +12,7 @@ interface HeroProps {
 export function Hero({ name, pronouns, headline, bio, location, headshot }: HeroProps) {
   return (
     <header className="spine hairline grid grid-cols-1 gap-[length:var(--space-6)] border-b py-[length:var(--space-8)] md:grid-cols-[minmax(0,1fr)_20rem]">
-      <div>
+      <div className="hero-enter">
         <h1
           className="font-display"
           style={{ fontSize: "var(--text-hero)", lineHeight: 1.02 }}
@@ -41,7 +41,7 @@ export function Hero({ name, pronouns, headline, bio, location, headshot }: Hero
         width={headshot.width}
         height={headshot.height}
         alt={headshot.alt}
-        className="h-auto w-full object-cover"
+        className="hero-enter-image h-auto w-full object-cover"
         style={{ borderRadius: "var(--radius-md)", aspectRatio: "3 / 4" }}
       />
     </header>
