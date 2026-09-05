@@ -39,17 +39,17 @@ export default function ActorPage() {
         location={actor.location}
         headshot={actor.photos.headshot}
       />
-      {actor.photos.fullBody && <Portrait image={actor.photos.fullBody} />}
-      {actor.stats && actor.stats.length > 0 && <StatStrip stats={actor.stats} />}
-      <Credits credits={actor.credits} />
-      {actor.showreel && <Showreel showreel={actor.showreel} actorName={actor.name} />}
-      {actor.photos.gallery && actor.photos.gallery.length > 0 && <Gallery images={actor.photos.gallery} />}
-      {actor.skills && actor.skills.length > 0 && <Skills categories={actor.skills} />}
-      {actor.training && actor.training.length > 0 && <Training entries={actor.training} />}
-      {actor.awards && actor.awards.length > 0 && <Awards awards={actor.awards} />}
-      {actor.press && actor.press.length > 0 && <Press items={actor.press} />}
-      {actor.agent && <Representation agent={actor.agent} />}
-      <Contact contact={actor.contact} name={actor.name} />
+      <Portrait image={actor.photos.fullBody} />
+      <StatStrip stats={actor.stats} />
+      <Credits credits={actor.credits} label={actor.labels?.credits} />
+      <Showreel showreel={actor.showreel} actorName={actor.name} label={actor.labels?.showreel} />
+      <Gallery images={actor.photos.gallery} label={actor.labels?.gallery} />
+      <Skills categories={actor.skills} label={actor.labels?.skills} />
+      <Training entries={actor.training} label={actor.labels?.training} />
+      <Awards awards={actor.awards} label={actor.labels?.awards} />
+      <Press items={actor.press} label={actor.labels?.press} />
+      <Representation agent={actor.agent} label={actor.labels?.representation} />
+      <Contact contact={actor.contact} name={actor.name} label={actor.labels?.contact} />
     </main>
   );
 }

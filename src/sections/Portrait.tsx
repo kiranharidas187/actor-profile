@@ -1,10 +1,12 @@
 import type { ImageRef } from "../types/actor";
 
 interface PortraitProps {
-  image: ImageRef;
+  image?: ImageRef;
 }
 
 export function Portrait({ image }: PortraitProps) {
+  if (!image) return null;
+
   return (
     <section className="spine py-[length:var(--space-7)]">
       <img

@@ -1,10 +1,12 @@
 import type { Stat } from "../types/actor";
 
 interface StatStripProps {
-  stats: Stat[];
+  stats?: Stat[];
 }
 
 export function StatStrip({ stats }: StatStripProps) {
+  if (!stats?.length) return null;
+
   return (
     <section className="spine py-[length:var(--space-5)]">
       <div

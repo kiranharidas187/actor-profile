@@ -4,12 +4,15 @@ import type { ContactInfo } from "../types/actor";
 interface ContactProps {
   contact: ContactInfo;
   name: string;
+  label?: string;
 }
 
-export function Contact({ contact, name }: ContactProps) {
+export function Contact({ contact, name, label }: ContactProps) {
+  if (!contact) return null;
+
   return (
     <footer className="spine hairline border-t py-[length:var(--space-8)]">
-      <SectionHeading>Contact</SectionHeading>
+      <SectionHeading>{label || "Contact"}</SectionHeading>
       <div className="mt-[length:var(--space-4)]" style={{ fontSize: "var(--text-base)" }}>
         {contact.email ? (
           <div>

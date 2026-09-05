@@ -51,7 +51,8 @@ export interface SkillCategory {
   items: SkillItem[];
 }
 
-export interface Showreel {
+export interface ShowreelItem {
+  title?: string;
   youtubeId: string;
   poster?: ImageRef;
 }
@@ -88,6 +89,18 @@ export interface ContactInfo {
   socials?: SocialLink[];
 }
 
+export interface SectionLabels {
+  credits?: string;
+  training?: string;
+  skills?: string;
+  showreel?: string;
+  awards?: string;
+  press?: string;
+  gallery?: string;
+  representation?: string;
+  contact?: string;
+}
+
 export interface Actor {
   slug: string;
   name: string;
@@ -101,14 +114,15 @@ export interface Actor {
     gallery?: GalleryImage[];
   };
   stats?: Stat[];
-  credits: Credit[];
+  credits?: Credit[];
   training?: TrainingEntry[];
   skills?: SkillCategory[];
-  showreel?: Showreel;
+  showreel?: ShowreelItem[];
   awards?: AwardEntry[];
   press?: PressEntry[];
   agent?: Agent;
   contact: ContactInfo;
+  labels?: SectionLabels;
 }
 
 export interface SiteConfig {

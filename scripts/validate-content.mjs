@@ -77,7 +77,9 @@ for (const file of actorFiles) {
   for (const [i, frame] of (actor.photos?.gallery ?? []).entries()) {
     checkImageExists(relPath, frame, `photos.gallery[${i}]`);
   }
-  if (actor.showreel?.poster) checkImageExists(relPath, actor.showreel.poster, "showreel.poster");
+  for (const [i, reel] of (actor.showreel ?? []).entries()) {
+    if (reel.poster) checkImageExists(relPath, reel.poster, `showreel[${i}].poster`);
+  }
 }
 
 if (failed) {

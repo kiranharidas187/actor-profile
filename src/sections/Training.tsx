@@ -2,14 +2,17 @@ import { SectionHeading } from "../components/SectionHeading";
 import type { TrainingEntry } from "../types/actor";
 
 interface TrainingProps {
-  entries: TrainingEntry[];
+  entries?: TrainingEntry[];
+  label?: string;
 }
 
-export function Training({ entries }: TrainingProps) {
+export function Training({ entries, label }: TrainingProps) {
+  if (!entries?.length) return null;
+
   const sorted = [...entries].sort((a, b) => b.year - a.year);
   return (
     <section className="spine py-[length:var(--space-7)]">
-      <SectionHeading>Training</SectionHeading>
+      <SectionHeading>{label || "Training"}</SectionHeading>
       <table className="hairline mt-[length:var(--space-5)] w-full border-collapse border-t" style={{ fontSize: "var(--text-sm)" }}>
         <tbody>
           {sorted.map((entry) => (

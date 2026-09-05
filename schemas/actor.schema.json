@@ -5,7 +5,7 @@
   "description": "One actor's full profile. Every field here maps directly to something visible on their page — edit this file and the page changes, no code involved. Sections left out entirely (no 'training' key at all, for example) are hidden on the page rather than shown empty.",
   "type": "object",
   "additionalProperties": false,
-  "required": ["slug", "name", "headline", "bio", "location", "photos", "credits", "contact"],
+  "required": ["slug", "name", "headline", "bio", "location", "photos", "contact"],
   "$defs": {
     "image": {
       "type": "object",
@@ -117,8 +117,7 @@
     },
     "credits": {
       "type": "array",
-      "minItems": 1,
-      "description": "Acting credits, shown as a table grouped by medium (newest first within each group).",
+      "description": "Acting credits, shown as a table grouped by medium (newest first within each group). Omit or leave empty to hide the Credits section.",
       "items": {
         "type": "object",
         "additionalProperties": false,
@@ -183,15 +182,19 @@
       }
     },
     "showreel": {
-      "type": "object",
-      "additionalProperties": false,
-      "required": ["youtubeId"],
-      "description": "The actor's demo reel video. Omit entirely to hide the showreel section — do not set this to placeholder or empty values.",
-      "properties": {
-        "youtubeId": { "type": "string", "description": "The YouTube video ID (the part after v= in the URL), e.g. \"dQw4w9WgXcQ\"." },
-        "poster": {
-          "allOf": [{ "$ref": "#/$defs/image" }],
-          "description": "Optional custom poster frame (16:9). If omitted, YouTube's own thumbnail is used."
+      "type": "array",
+      "description": "The actor's demo reel videos, shown in order. Omit entirely, or leave empty, to hide the showreel section. Give each reel a \"title\" when there's more than one, e.g. \"Drama Reel\", \"Comedy Reel\".",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["youtubeId"],
+        "properties": {
+          "title": { "type": "string", "description": "A short label shown above this reel when there's more than one, e.g. \"Drama Reel\"." },
+          "youtubeId": { "type": "string", "description": "The YouTube video ID (the part after v= in the URL), e.g. \"dQw4w9WgXcQ\"." },
+          "poster": {
+            "allOf": [{ "$ref": "#/$defs/image" }],
+            "description": "Optional custom poster frame (16:9). If omitted, YouTube's own thumbnail is used."
+          }
         }
       }
     },
@@ -256,6 +259,22 @@
             }
           }
         }
+      }
+    },
+    "labels": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Optional overrides for the section headings shown on this actor's page. Omit any key, or the whole object, to use the default English heading.",
+      "properties": {
+        "credits": { "type": "string", "description": "Override the default \"Credits\" heading shown above this section. Omit to use the default." },
+        "training": { "type": "string", "description": "Override the default \"Training\" heading shown above this section. Omit to use the default." },
+        "skills": { "type": "string", "description": "Override the default \"Skills\" heading shown above this section. Omit to use the default." },
+        "showreel": { "type": "string", "description": "Override the default \"Showreel\" heading shown above this section. Omit to use the default." },
+        "awards": { "type": "string", "description": "Override the default \"Awards\" heading shown above this section. Omit to use the default." },
+        "press": { "type": "string", "description": "Override the default \"Press\" heading shown above this section. Omit to use the default." },
+        "gallery": { "type": "string", "description": "Override the default \"Gallery\" heading shown above this section. Omit to use the default." },
+        "representation": { "type": "string", "description": "Override the default \"Representation\" heading shown above this section. Omit to use the default." },
+        "contact": { "type": "string", "description": "Override the default \"Contact\" heading shown above this section. Omit to use the default." }
       }
     }
   }

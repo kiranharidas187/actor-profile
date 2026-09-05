@@ -2,7 +2,8 @@ import { SectionHeading } from "../components/SectionHeading";
 import type { Credit, CreditMedium } from "../types/actor";
 
 interface CreditsProps {
-  credits: Credit[];
+  credits?: Credit[];
+  label?: string;
 }
 
 const MEDIUM_ORDER: CreditMedium[] = [
@@ -14,15 +15,19 @@ const MEDIUM_ORDER: CreditMedium[] = [
   "Commercial",
 ];
 
-export function Credits({ credits }: CreditsProps) {
+export function Credits({ credits, label }: CreditsProps) {
+  if (!credits?.length) return null;
+
   const groups = MEDIUM_ORDER.map((medium) => ({
     medium,
     items: credits.filter((c) => c.medium === medium).sort((a, b) => b.year - a.year),
   })).filter((group) => group.items.length > 0);
 
+  if (groups.length === 0) return null;
+
   return (
     <section className="spine py-[length:var(--space-7)]">
-      <SectionHeading>Credits</SectionHeading>
+      <SectionHeading>{label || "Credits"}</SectionHeading>
       <table className="mt-[length:var(--space-5)] w-full border-collapse" style={{ fontSize: "var(--text-sm)" }}>
         <colgroup>
           <col className="w-[45%]" />

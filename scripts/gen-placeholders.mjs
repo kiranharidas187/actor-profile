@@ -41,7 +41,9 @@ function collectImages(actor) {
   if (actor.photos?.headshot) images.push(actor.photos.headshot);
   if (actor.photos?.fullBody) images.push(actor.photos.fullBody);
   for (const frame of actor.photos?.gallery ?? []) images.push(frame);
-  if (actor.showreel?.poster) images.push(actor.showreel.poster);
+  for (const reel of actor.showreel ?? []) {
+    if (reel.poster) images.push(reel.poster);
+  }
   return images;
 }
 

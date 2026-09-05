@@ -2,13 +2,16 @@ import { SectionHeading } from "../components/SectionHeading";
 import type { PressEntry } from "../types/actor";
 
 interface PressProps {
-  items: PressEntry[];
+  items?: PressEntry[];
+  label?: string;
 }
 
-export function Press({ items }: PressProps) {
+export function Press({ items, label }: PressProps) {
+  if (!items?.length) return null;
+
   return (
     <section className="spine py-[length:var(--space-7)]">
-      <SectionHeading>Press</SectionHeading>
+      <SectionHeading>{label || "Press"}</SectionHeading>
       <ul className="hairline mt-[length:var(--space-5)] border-t" style={{ fontSize: "var(--text-sm)" }}>
         {items.map((item) => (
           <li key={item.url} className="hairline border-b py-[length:var(--space-3)]">

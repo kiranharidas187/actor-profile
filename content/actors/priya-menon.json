@@ -74,10 +74,12 @@
       { "label": "Piano", "level": "Basic" }
     ] }
   ],
-  "showreel": {
-    "youtubeId": "dQw4w9WgXcQ",
-    "poster": { "src": "/photos/priya-menon/showreel-poster.jpg", "width": 1280, "height": 720, "alt": "Showreel poster frame for Priya Menon" }
-  },
+  "showreel": [
+    {
+      "youtubeId": "dQw4w9WgXcQ",
+      "poster": { "src": "/photos/priya-menon/showreel-poster.jpg", "width": 1280, "height": 720, "alt": "Showreel poster frame for Priya Menon" }
+    }
+  ],
   "awards": [
     { "name": "Filmfare Award for Best Actress (Critics)", "project": "Ferrous", "year": 2021, "category": "Winner" },
     { "name": "Screen Award for Best Supporting Actress", "project": "Salt & Tide", "year": 2022, "category": "Nominee" },

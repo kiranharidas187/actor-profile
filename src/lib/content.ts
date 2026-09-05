@@ -37,12 +37,10 @@ function resolveActorImages(actor: Actor): Actor {
       fullBody: actor.photos.fullBody ? resolveImageRef(actor.photos.fullBody) : undefined,
       gallery: actor.photos.gallery?.map((img) => ({ ...img, src: withBase(img.src) })),
     },
-    showreel: actor.showreel
-      ? {
-          ...actor.showreel,
-          poster: actor.showreel.poster ? resolveImageRef(actor.showreel.poster) : undefined,
-        }
-      : undefined,
+    showreel: actor.showreel?.map((reel) => ({
+      ...reel,
+      poster: reel.poster ? resolveImageRef(reel.poster) : undefined,
+    })),
   };
 }
 
