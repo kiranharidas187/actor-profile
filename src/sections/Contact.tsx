@@ -13,7 +13,7 @@ export function Contact({ contact, name }: ContactProps) {
       <div className="mt-[length:var(--space-4)]" style={{ fontSize: "var(--text-base)" }}>
         {contact.email ? (
           <div>
-            <a href={`mailto:${contact.email}`} className="underline underline-offset-4">
+            <a href={`mailto:${contact.email}`} className="link-lift underline underline-offset-4">
               {contact.email}
             </a>
           </div>
@@ -22,7 +22,7 @@ export function Contact({ contact, name }: ContactProps) {
         {contact.socials && contact.socials.length > 0 ? (
           <div className="mt-[length:var(--space-3)] flex gap-[length:var(--space-4)]">
             {contact.socials.map((social) => (
-              <a key={social.url} href={social.url} target="_blank" rel="noreferrer" className="underline underline-offset-4">
+              <a key={social.url} href={social.url} target="_blank" rel="noreferrer" className="link-lift underline underline-offset-4">
                 {social.platform}
               </a>
             ))}

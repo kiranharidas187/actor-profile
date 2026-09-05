@@ -137,3 +137,16 @@ body {
 .video-play-trigger:active {
   transform: scale(0.96);
 }
+
+.link-lift {
+  display: inline-block;
+  transition: transform var(--dur-fast) var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .link-lift:hover {
+    transform: translateY(-1px);
+  }
+}
+.link-lift:focus-visible {
+  transform: translateY(-1px);
+}

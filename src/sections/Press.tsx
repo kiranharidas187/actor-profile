@@ -12,7 +12,7 @@ export function Press({ items }: PressProps) {
       <ul className="hairline mt-[length:var(--space-5)] border-t" style={{ fontSize: "var(--text-sm)" }}>
         {items.map((item) => (
           <li key={item.url} className="hairline border-b py-[length:var(--space-3)]">
-            <a href={item.url} target="_blank" rel="noreferrer" className="underline underline-offset-4">
+            <a href={item.url} target="_blank" rel="noreferrer" className="link-lift underline underline-offset-4">
               {item.title}
             </a>
             <div style={{ color: "var(--c-muted)", fontSize: "var(--text-xs)" }}>

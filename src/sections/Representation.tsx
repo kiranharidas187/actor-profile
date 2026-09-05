@@ -14,7 +14,7 @@ export function Representation({ agent }: RepresentationProps) {
         <div style={{ color: "var(--c-muted)" }}>{agent.agency}</div>
         {agent.email ? (
           <div className="mt-[length:var(--space-2)]">
-            <a href={`mailto:${agent.email}`} className="underline underline-offset-4">
+            <a href={`mailto:${agent.email}`} className="link-lift underline underline-offset-4">
               {agent.email}
             </a>
           </div>
