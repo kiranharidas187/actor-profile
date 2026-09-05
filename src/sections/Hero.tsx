@@ -11,7 +11,7 @@ interface HeroProps {
 
 export function Hero({ name, pronouns, headline, bio, location, headshot }: HeroProps) {
   return (
-    <header className="spine grid grid-cols-1 gap-[length:var(--space-6)] py-[length:var(--space-8)] md:grid-cols-[minmax(0,1fr)_20rem]">
+    <header className="spine hairline grid grid-cols-1 gap-[length:var(--space-6)] border-b py-[length:var(--space-8)] md:grid-cols-[minmax(0,1fr)_20rem]">
       <div>
         <h1
           className="font-display"

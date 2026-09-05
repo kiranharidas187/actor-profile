@@ -8,7 +8,7 @@ interface ContactProps {
 
 export function Contact({ contact, name }: ContactProps) {
   return (
-    <footer className="spine py-[length:var(--space-8)]">
+    <footer className="spine hairline border-t py-[length:var(--space-8)]">
       <SectionHeading>Contact</SectionHeading>
       <div className="mt-[length:var(--space-4)]" style={{ fontSize: "var(--text-base)" }}>
         {contact.email ? (
