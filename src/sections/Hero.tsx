@@ -1,6 +1,7 @@
 import type { ImageRef } from "../types/actor";
 
 interface HeroProps {
+  slug: string;
   name: string;
   pronouns?: string;
   headline: string;
@@ -9,7 +10,7 @@ interface HeroProps {
   headshot: ImageRef;
 }
 
-export function Hero({ name, pronouns, headline, bio, location, headshot }: HeroProps) {
+export function Hero({ slug, name, pronouns, headline, bio, location, headshot }: HeroProps) {
   return (
     <header className="spine hairline grid grid-cols-1 gap-[length:var(--space-6)] border-b py-[length:var(--space-8)] md:grid-cols-[minmax(0,1fr)_20rem]">
       <div className="hero-enter">
@@ -42,7 +43,7 @@ export function Hero({ name, pronouns, headline, bio, location, headshot }: Hero
         height={headshot.height}
         alt={headshot.alt}
         className="hero-enter-image h-auto w-full object-cover"
-        style={{ borderRadius: "var(--radius-md)", aspectRatio: "3 / 4" }}
+        style={{ borderRadius: "var(--radius-md)", aspectRatio: "3 / 4", viewTransitionName: `headshot-${slug}` }}
       />
     </header>
   );

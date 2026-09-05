@@ -4,6 +4,7 @@
  * libraries that take a numeric duration, e.g. `motion/react`'s `transition`.
  */
 export function getMotionScale(): number {
+  if (typeof document === "undefined") return 1;
   const raw = getComputedStyle(document.documentElement).getPropertyValue("--motion-scale");
   const parsed = Number.parseFloat(raw);
   return Number.isFinite(parsed) ? parsed : 1;

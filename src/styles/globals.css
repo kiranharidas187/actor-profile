@@ -4,6 +4,7 @@
   --dur-fast: calc(150ms * var(--motion-scale));
   --dur-base: calc(220ms * var(--motion-scale));
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out: cubic-bezier(0.77, 0, 0.175, 1);
 }
 
 body {
@@ -149,4 +150,17 @@ body {
 }
 .link-lift:focus-visible {
   transform: translateY(-1px);
+}
+
+/*
+ * The headshot morphs between its grid-thumbnail crop and its Hero position
+ * on navigation (matching view-transition-name set on both images). Purpose:
+ * spatial consistency - showing where the image came from, not an entrance
+ * or hover, hence the separate --ease-in-out (moving/morphing on screen)
+ * rather than reusing --ease-out. Gated off in JS (see home.tsx) when
+ * --motion-scale is 0; this rule is the duration fallback either way.
+ */
+::view-transition-group(*) {
+  animation-duration: calc(220ms * var(--motion-scale));
+  animation-timing-function: var(--ease-in-out);
 }

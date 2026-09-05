@@ -31,6 +31,7 @@ export default function ActorPage() {
   return (
     <main>
       <Hero
+        slug={actor.slug}
         name={actor.name}
         pronouns={actor.pronouns}
         headline={actor.headline}

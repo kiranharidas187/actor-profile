@@ -1,5 +1,6 @@
 import { Navigate, Link } from "react-router";
 import { getAllActors, getSiteConfig } from "../../lib/content";
+import { getMotionScale } from "../../lib/motion";
 
 export default function Home() {
   const actors = getAllActors();
@@ -19,7 +20,7 @@ export default function Home() {
       </p>
       <div className="mt-[length:var(--space-7)] grid grid-cols-1 gap-[length:var(--space-6)] sm:grid-cols-2 md:grid-cols-3">
         {actors.map((actor) => (
-          <Link key={actor.slug} to={`/${actor.slug}`} className="group block">
+          <Link key={actor.slug} to={`/${actor.slug}`} className="group block" viewTransition={getMotionScale() > 0}>
             <div className="relative overflow-hidden" style={{ borderRadius: "var(--radius-md)" }}>
               <img
                 src={actor.photos.headshot.src}
@@ -27,7 +28,7 @@ export default function Home() {
                 height={actor.photos.headshot.height}
                 alt={actor.photos.headshot.alt}
                 className="hover-scale w-full object-cover"
-                style={{ aspectRatio: "3 / 4" }}
+                style={{ aspectRatio: "3 / 4", viewTransitionName: `headshot-${actor.slug}` }}
               />
               <span aria-hidden="true" className="accent-underline" />
             </div>
