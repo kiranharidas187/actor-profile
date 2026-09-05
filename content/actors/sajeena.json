@@ -1,0 +1,105 @@
+{
+  "$schema": "../../schemas/actor.schema.json",
+  "slug": "sajeena",
+  "name": "Priya Menon",
+  "pronouns": "she/her",
+  "headline": "Actor, Mumbai & London",
+  "bio": "Priya Menon is an actor working across film, television, and theatre, known for character-driven roles that move between English, Hindi, and Malayalam. She trained at Whistling Woods International before moving into features, and has spent the last decade splitting her time between Mumbai productions and London stage work.\n\nHer recent credits include the lead role in Monsoon Diaries, praised for its unflinching look at a joint family unravelling over one wedding season, and a recurring arc on the television series Cantonment Road.",
+  "location": "Mumbai, India",
+  "photos": {
+    "headshot": { "src": "/photos/sajeena/headshot.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon, headshot, looking directly at camera" },
+    "fullBody": { "src": "/photos/sajeena/full-body.jpeg", "width": 800, "height": 1200, "alt": "Priya Menon, full-length, studio lighting" },
+    "gallery": [
+      { "src": "/photos/sajeena/gallery-1.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon on the set of Monsoon Diaries", "caption": "On set, Monsoon Diaries (2023)" },
+      { "src": "/photos/sajeena/gallery-2.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon in rehearsal for a stage production", "caption": "Rehearsal, The Waiting Room (2022)" },
+      { "src": "/photos/sajeena/gallery-3.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon at a press event", "caption": "Press day, Cantonment Road, Season 2" },
+      { "src": "/photos/sajeena/gallery-4.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon in costume for a period drama", "caption": "Costume fitting, Salt & Tide (2021)" },
+      { "src": "/photos/sajeena/gallery-5.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon backstage before a performance", "caption": "Backstage, Royal Court Theatre, London" },
+      { "src": "/photos/sajeena/gallery-6.jpeg", "width": 900, "height": 1200, "alt": "Priya Menon in a promotional shoot", "caption": "Promotional shoot, Ferrous (2020)" }
+    ]
+  },
+  "stats": [
+    { "label": "Height", "value": "5'6\"" },
+    { "label": "Playing age", "value": "25–38" },
+    { "label": "Languages", "value": "English, Hindi, Malayalam" },
+    { "label": "Hair", "value": "Black" },
+    { "label": "Eyes", "value": "Brown" },
+    { "label": "Union", "value": "CINTAA, Equity (UK)" }
+  ],
+  "credits": [
+    { "title": "Monsoon Diaries", "role": "Meera (Lead)", "medium": "Feature Film", "year": 2023, "director": "Rohan Kapoor", "company": "Ferrous Films" },
+    { "title": "Cantonment Road", "role": "Inspector Leela Nair (Recurring)", "medium": "Television", "year": 2023, "company": "Sundial Network" },
+    { "title": "The Waiting Room", "role": "Anu", "medium": "Theatre", "year": 2022, "director": "Meredith Voss", "company": "Royal Court Theatre" },
+    { "title": "Salt & Tide", "role": "Kamala", "medium": "Feature Film", "year": 2021, "director": "Rohan Kapoor", "company": "Ferrous Films" },
+    { "title": "Ferrous", "role": "Dr. Anjali Menon (Lead)", "medium": "Feature Film", "year": 2020, "director": "Wren Okafor" },
+    { "title": "City of Small Blessings", "role": "Rukmini", "medium": "Web Series", "year": 2020, "company": "Bluewick Studios" },
+    { "title": "Harbourline", "role": "Fatima", "medium": "Television", "year": 2019, "company": "Sundial Network" },
+    { "title": "The Long Table", "role": "Devika", "medium": "Theatre", "year": 2018, "director": "Priyamvada Rao" },
+    { "title": "Second Skin", "role": "Nurse Latha", "medium": "Short Film", "year": 2018, "director": "Ishaan Bedi" },
+    { "title": "Bright Detergent", "role": "Homemaker (Lead)", "medium": "Commercial", "year": 2022, "company": "Bright Detergent / Ogilvy Mumbai" },
+    { "title": "Suvarna Gold Jewellery — Wedding Season", "role": "Bride", "medium": "Commercial", "year": 2021, "company": "Suvarna Gold" },
+    { "title": "AirIndigo — Monsoon Fares", "role": "Traveller (Lead)", "medium": "Commercial", "year": 2020, "company": "AirIndigo" },
+    { "title": "Undertow", "role": "Meenakshi", "medium": "Short Film", "year": 2017, "director": "Chloe Fenwick" },
+    { "title": "Glasshouse", "role": "Servant Girl", "medium": "Theatre", "year": 2016, "director": "Meredith Voss" }
+  ],
+  "training": [
+    { "program": "Meisner Technique, Two-Year Conservatory", "school": "Whistling Woods International", "instructor": "Kabir Suri", "year": 2014 },
+    { "program": "Classical Voice & Verse", "school": "Royal Academy of Dramatic Art (Short Course)", "year": 2017 },
+    { "program": "Screen Acting Intensive", "school": "Anupam Kher's Actor Prepares", "year": 2013 },
+    { "program": "Bharatanatyam, Advanced Certificate", "school": "Kalakshetra Foundation", "instructor": "Meenakshi Chitharanjan", "year": 2011 },
+    { "program": "Stage Combat & Intimacy Coordination Workshop", "school": "Royal Court Theatre", "year": 2022 },
+    { "program": "Malayalam Cinema Dialect Workshop", "school": "Kerala State Chalachitra Academy", "year": 2019 }
+  ],
+  "skills": [
+    { "category": "Languages", "items": [
+      { "label": "Malayalam", "level": "Native" },
+      { "label": "English", "level": "Fluent" },
+      { "label": "Hindi", "level": "Fluent" },
+      { "label": "Tamil", "level": "Conversational" }
+    ] },
+    { "category": "Dance", "items": [
+      { "label": "Bharatanatyam", "level": "Advanced" },
+      { "label": "Contemporary", "level": "Intermediate" }
+    ] },
+    { "category": "Combat & Stunts", "items": [
+      { "label": "Stage Combat", "level": "Trained" },
+      { "label": "Intimacy Coordination", "level": "Certified" }
+    ] },
+    { "category": "Sports", "items": [
+      { "label": "Horse Riding", "level": "Intermediate" },
+      { "label": "Swimming", "level": "Advanced" }
+    ] },
+    { "category": "Music", "items": [
+      { "label": "Carnatic Vocals", "level": "Trained" },
+      { "label": "Piano", "level": "Basic" }
+    ] }
+  ],
+  "showreel": {
+    "youtubeId": "dQw4w9WgXcQ",
+    "poster": { "src": "/photos/sajeena/showreel-poster.jpeg", "width": 1280, "height": 720, "alt": "Showreel poster frame for Priya Menon" }
+  },
+  "awards": [
+    { "name": "Filmfare Award for Best Actress (Critics)", "project": "Ferrous", "year": 2021, "category": "Winner" },
+    { "name": "Screen Award for Best Supporting Actress", "project": "Salt & Tide", "year": 2022, "category": "Nominee" },
+    { "name": "Kerala State Film Award", "project": "Monsoon Diaries", "year": 2024, "category": "Winner" }
+  ],
+  "press": [
+    { "title": "Priya Menon on carrying a family drama without melodrama", "publication": "The Hindu", "url": "https://example.com/the-hindu-sajeena", "date": "2023-11-02" },
+    { "title": "The quiet rise of Priya Menon", "publication": "Film Companion", "url": "https://example.com/film-companion-sajeena", "date": "2022-06-14" },
+    { "title": "Cantonment Road's breakout star talks procedural fatigue", "publication": "Rolling Stone India", "url": "https://example.com/rolling-stone-sajeena", "date": "2023-08-21" },
+    { "title": "Priya Menon: 'London taught me to slow down'", "publication": "The Stage", "url": "https://example.com/the-stage-sajeena", "date": "2022-03-09" }
+  ],
+  "agent": {
+    "name": "Farah Contractor",
+    "agency": "Contractor & Vance Talent",
+    "email": "farah@contractorvance.example.com",
+    "phone": "+91 98200 00000"
+  },
+  "contact": {
+    "email": "hello@priyamenon.example.com",
+    "phone": "+91 98765 00000",
+    "socials": [
+      { "platform": "Instagram", "url": "https://instagram.com/example-priyamenon" }
+    ]
+  }
+}

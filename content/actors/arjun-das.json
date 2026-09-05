@@ -1,0 +1,19 @@
+{
+  "$schema": "../../schemas/actor.schema.json",
+  "slug": "arjun-das",
+  "name": "Arjun Das",
+  "headline": "Actor, Kolkata",
+  "bio": "Arjun Das is a Kolkata-based actor in the early stages of his career, working primarily in independent theatre and short film. He graduated from a local theatre collective's two-year ensemble program in 2023 and has since appeared in three productions, most recently originating a lead role in a new play staged at a small independent venue.",
+  "location": "Kolkata, India",
+  "photos": {
+    "headshot": { "src": "/photos/arjun-das/headshot.jpg", "width": 900, "height": 1200, "alt": "Arjun Das, headshot, neutral expression" }
+  },
+  "credits": [
+    { "title": "The Long Walk Home", "role": "Bimal (Lead)", "medium": "Theatre", "year": 2024, "director": "Sohini Basu", "company": "Chalchitra Ensemble" },
+    { "title": "Paper Boats", "role": "Rana", "medium": "Short Film", "year": 2023, "director": "Debjani Sen" },
+    { "title": "Ashes on the Ganga", "role": "Ensemble", "medium": "Theatre", "year": 2023, "company": "Chalchitra Ensemble" }
+  ],
+  "contact": {
+    "email": "arjun.das.actor@example.com"
+  }
+}

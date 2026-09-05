@@ -1,0 +1,262 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://actor-profile.local/schemas/actor.schema.json",
+  "title": "Actor",
+  "description": "One actor's full profile. Every field here maps directly to something visible on their page — edit this file and the page changes, no code involved. Sections left out entirely (no 'training' key at all, for example) are hidden on the page rather than shown empty.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["slug", "name", "headline", "bio", "location", "photos", "credits", "contact"],
+  "$defs": {
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["src", "width", "height", "alt"],
+      "properties": {
+        "src": {
+          "type": "string",
+          "description": "Path to the image file, relative to the site root, e.g. \"/photos/priya-menon/headshot.jpg\"."
+        },
+        "width": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "description": "The image's real pixel width. Used to reserve space on the page before the image loads, so the layout doesn't jump."
+        },
+        "height": {
+          "type": "integer",
+          "exclusiveMinimum": 0,
+          "description": "The image's real pixel height. Used together with width to reserve space before the image loads."
+        },
+        "alt": {
+          "type": "string",
+          "description": "A short description of the image for screen readers, e.g. \"Priya Menon, headshot, looking off-camera\"."
+        }
+      }
+    }
+  },
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to this schema file, for editor autocomplete. Not used at runtime."
+    },
+    "slug": {
+      "type": "string",
+      "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+      "description": "The URL segment for this actor's page, e.g. \"priya-menon\" becomes /priya-menon. Must match this file's name (without .json)."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The actor's full name as it should be displayed everywhere on the page."
+    },
+    "pronouns": {
+      "type": "string",
+      "description": "Optional pronouns shown next to the name, e.g. \"she/her\"."
+    },
+    "headline": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A one-line descriptor shown directly under the name, e.g. \"Actor, Mumbai & London\"."
+    },
+    "bio": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The main biography paragraph(s) shown in the hero section. Plain text; line breaks are preserved."
+    },
+    "location": {
+      "type": "string",
+      "description": "Where the actor is based, e.g. \"Mumbai, India\"."
+    },
+    "photos": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["headshot"],
+      "description": "The actor's photos. headshot is required; fullBody and gallery are optional and simply don't render if omitted.",
+      "properties": {
+        "headshot": {
+          "allOf": [{ "$ref": "#/$defs/image" }],
+          "description": "The primary 3:4 portrait shown in the hero section."
+        },
+        "fullBody": {
+          "allOf": [{ "$ref": "#/$defs/image" }],
+          "description": "An optional 2:3 full-body shot."
+        },
+        "gallery": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["src", "width", "height", "alt", "caption"],
+            "properties": {
+              "src": { "type": "string", "description": "Path to the image file, relative to the site root." },
+              "width": { "type": "integer", "exclusiveMinimum": 0, "description": "The image's real pixel width." },
+              "height": { "type": "integer", "exclusiveMinimum": 0, "description": "The image's real pixel height." },
+              "alt": { "type": "string", "description": "A short description of the image for screen readers." },
+              "caption": {
+                "type": "string",
+                "description": "A short caption slug shown under this frame in the gallery grid, e.g. \"On set, Monsoon Diaries (2023)\"."
+              }
+            }
+          },
+          "description": "Additional photos shown in a uniform grid. Omit entirely, or leave as an empty array, to hide the gallery section."
+        }
+      }
+    },
+    "stats": {
+      "type": "array",
+      "description": "Quick-reference facts shown in a horizontally-scrolling strip near the top of the page, e.g. height, playing age range, languages. Omit to hide the strip.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["label", "value"],
+        "properties": {
+          "label": { "type": "string", "description": "e.g. \"Height\", \"Playing age\", \"Languages\"." },
+          "value": { "type": "string", "description": "e.g. \"5'6\\\"\", \"25–35\", \"English, Hindi, Malayalam\"." }
+        }
+      },
+      "examples": [[{ "label": "Height", "value": "5'6\"" }, { "label": "Playing age", "value": "25–35" }]]
+    },
+    "credits": {
+      "type": "array",
+      "minItems": 1,
+      "description": "Acting credits, shown as a table grouped by medium (newest first within each group).",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "role", "medium", "year"],
+        "properties": {
+          "title": { "type": "string", "description": "The production's title, e.g. \"Monsoon Diaries\"." },
+          "role": { "type": "string", "description": "The character or role played, e.g. \"Meera (Lead)\"." },
+          "medium": {
+            "type": "string",
+            "enum": ["Feature Film", "Television", "Web Series", "Theatre", "Short Film", "Commercial"],
+            "description": "The category this credit is grouped under in the credits table."
+          },
+          "year": {
+            "type": "integer",
+            "minimum": 1900,
+            "maximum": 2100,
+            "description": "The year of release or production."
+          },
+          "director": { "type": "string", "description": "Optional director or production company credit line." },
+          "company": { "type": "string", "description": "Optional studio, network, or production house name." }
+        }
+      }
+    },
+    "training": {
+      "type": "array",
+      "description": "Formal training and workshops. Omit to hide the training section.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["program", "school", "year"],
+        "properties": {
+          "program": { "type": "string", "description": "e.g. \"Meisner Technique, Two-Year Conservatory\"." },
+          "school": { "type": "string", "description": "e.g. \"Whistling Woods International\"." },
+          "instructor": { "type": "string", "description": "Optional named instructor." },
+          "year": { "type": "integer", "minimum": 1900, "maximum": 2100 }
+        }
+      }
+    },
+    "skills": {
+      "type": "array",
+      "description": "Special skills grouped by category, shown as label + level pairs. Omit to hide the skills section.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["category", "items"],
+        "properties": {
+          "category": { "type": "string", "description": "e.g. \"Languages\", \"Dance\", \"Combat & Stunts\", \"Sports\", \"Musical Instruments\"." },
+          "items": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["label", "level"],
+              "properties": {
+                "label": { "type": "string", "description": "e.g. \"Malayalam\", \"Kalaripayattu\", \"Horse Riding\"." },
+                "level": { "type": "string", "description": "A short proficiency word, e.g. \"Native\", \"Advanced\", \"Trained\", \"Basic\"." }
+              }
+            }
+          }
+        }
+      }
+    },
+    "showreel": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["youtubeId"],
+      "description": "The actor's demo reel video. Omit entirely to hide the showreel section — do not set this to placeholder or empty values.",
+      "properties": {
+        "youtubeId": { "type": "string", "description": "The YouTube video ID (the part after v= in the URL), e.g. \"dQw4w9WgXcQ\"." },
+        "poster": {
+          "allOf": [{ "$ref": "#/$defs/image" }],
+          "description": "Optional custom poster frame (16:9). If omitted, YouTube's own thumbnail is used."
+        }
+      }
+    },
+    "awards": {
+      "type": "array",
+      "description": "Award nominations and wins. Omit to hide the awards section.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["name", "project", "year"],
+        "properties": {
+          "name": { "type": "string", "description": "e.g. \"Filmfare Award for Best Debut\"." },
+          "project": { "type": "string", "description": "The production the award relates to." },
+          "year": { "type": "integer", "minimum": 1900, "maximum": 2100 },
+          "category": { "type": "string", "description": "Optional, e.g. \"Winner\" or \"Nominee\"." }
+        }
+      }
+    },
+    "press": {
+      "type": "array",
+      "description": "Press mentions and interviews. Omit to hide the press section.",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["title", "publication", "url"],
+        "properties": {
+          "title": { "type": "string", "description": "The headline or article title." },
+          "publication": { "type": "string", "description": "e.g. \"The Hindu\"." },
+          "url": { "type": "string", "format": "uri", "description": "Link to the article." },
+          "date": { "type": "string", "format": "date", "description": "Optional publication date, YYYY-MM-DD." }
+        }
+      }
+    },
+    "agent": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["name", "agency"],
+      "description": "Representation contact. Omit entirely if the actor is unrepresented — do not fill in placeholder values.",
+      "properties": {
+        "name": { "type": "string", "description": "The agent's name." },
+        "agency": { "type": "string", "description": "The agency's name." },
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string", "description": "A phone number in whatever format the agency prefers to publish." }
+      }
+    },
+    "contact": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Direct contact information shown in the contact block, which always aligns to the page's left spine.",
+      "properties": {
+        "email": { "type": "string", "format": "email" },
+        "phone": { "type": "string", "description": "A phone number in whatever format the actor prefers to publish." },
+        "socials": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["platform", "url"],
+            "properties": {
+              "platform": { "type": "string", "description": "e.g. \"Instagram\"." },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

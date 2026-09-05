@@ -1,6 +1,9 @@
 import { Links, Meta, Outlet, Scripts, ScrollRestoration } from "react-router";
 
 import "../styles/globals.css";
+import "virtual:theme.css";
+import "virtual:theme-fonts.css";
+import { fontPreloadHrefs } from "virtual:theme-config";
 
 export function Layout({ children }: { children: React.ReactNode }) {
   return (
@@ -9,6 +12,9 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        {fontPreloadHrefs.map((href) => (
+          <link key={href} rel="preload" as="font" type="font/woff2" href={href} crossOrigin="anonymous" />
+        ))}
         <Meta />
         <Links />
       </head>

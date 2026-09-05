@@ -1,0 +1,4 @@
+{
+  "$schema": "../schemas/theme.schema.json",
+  "preset": "darkroom"
+}

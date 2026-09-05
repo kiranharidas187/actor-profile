@@ -1,0 +1,11 @@
+{
+  "$schema": "../schemas/site.schema.json",
+  "name": "Menon & Das",
+  "description": "Actor portfolios and casting representation.",
+  "footer": {
+    "copyrightName": "Menon & Das",
+    "socials": [
+      { "platform": "Instagram", "url": "https://instagram.com/example" }
+    ]
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://actor-profile.local/schemas/theme.schema.json",
+  "title": "Theme",
+  "description": "The entire visual identity of the site. Pick a preset name and, optionally, nudge a small number of overrides on top of it. Never add a colour here beyond colors.accent — every other colour lives in src/theme/presets and is chosen by preset name only.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["preset"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to this schema file, for editor autocomplete. Not used at runtime."
+    },
+    "preset": {
+      "type": "string",
+      "enum": ["darkroom", "marquee", "screen-test", "green-room"],
+      "description": "The named colour identity for the whole site. 'darkroom' (default): warm bronze accent on near-black. 'marquee': printed-playbill cream and red. 'screen-test': black and white, no accent colour. 'green-room': backstage green with a brass accent."
+    },
+    "colors": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "The only place a raw colour may be typed outside src/theme/presets. Leave this out entirely unless you specifically need to shift the accent colour away from the preset's default.",
+      "properties": {
+        "accent": {
+          "type": "string",
+          "pattern": "^#[0-9a-fA-F]{6}$",
+          "description": "Overrides the preset's accent colour (used for links, highlights, and call-to-action text). Must be a 6-digit hex code, e.g. \"#B08A3E\". The text colour used on top of this accent is chosen automatically for contrast."
+        }
+      }
+    },
+    "typePair": {
+      "type": "string",
+      "enum": ["bodoni-plex", "fraunces-inter", "archivo-archivo", "spectral-plex"],
+      "description": "Which pair of typefaces to use for headings and body text. 'bodoni-plex' (default): Bodoni Moda display + IBM Plex Sans body. 'fraunces-inter': Fraunces display + Inter body. 'archivo-archivo': Archivo Expanded display + Archivo body. 'spectral-plex': Spectral display + IBM Plex Sans body. Only the selected pairing is downloaded by visitors."
+    },
+    "radius": {
+      "type": "string",
+      "enum": ["sharp", "soft", "round"],
+      "description": "How rounded corners are across the site, from photo frames to buttons. 'sharp': square corners. 'soft' (default): a small, modern rounding. 'round': pronounced rounded corners."
+    },
+    "density": {
+      "type": "string",
+      "enum": ["compact", "comfortable", "spacious"],
+      "description": "How much breathing room sits between sections and elements. 'compact': tighter spacing, more fits on screen. 'comfortable' (default): balanced spacing. 'spacious': generous, editorial whitespace."
+    },
+    "motion": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "Global multiplier for animation and transition intensity, from 0 (no motion at all) to 1 (full motion, the default). Visitors who have 'reduce motion' turned on in their operating system always get 0, regardless of this setting."
+    }
+  }
+}

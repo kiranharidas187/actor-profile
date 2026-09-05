@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://actor-profile.local/schemas/site.schema.json",
+  "title": "Site",
+  "description": "Site-wide metadata — the roster page's title and the footer shown on every page. Individual actors are not listed here; every file in content/actors/ is picked up automatically.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["name", "description"],
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path to this schema file, for editor autocomplete. Not used at runtime."
+    },
+    "name": {
+      "type": "string",
+      "minLength": 1,
+      "description": "The site's name, shown in the browser tab and on the roster page, e.g. \"Menon & Das Casting\"."
+    },
+    "description": {
+      "type": "string",
+      "minLength": 1,
+      "description": "A one-line description used as the roster page's subtitle and its meta description tag."
+    },
+    "footer": {
+      "type": "object",
+      "additionalProperties": false,
+      "description": "Shown at the bottom of every page. Omit entirely to hide the footer.",
+      "properties": {
+        "copyrightName": {
+          "type": "string",
+          "description": "The name shown after the copyright year, e.g. \"Priya Menon\" or an agency name."
+        },
+        "socials": {
+          "type": "array",
+          "description": "Site-wide social links (as opposed to an individual actor's, which live on their own profile).",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["platform", "url"],
+            "properties": {
+              "platform": { "type": "string", "description": "e.g. \"Instagram\"." },
+              "url": { "type": "string", "format": "uri" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

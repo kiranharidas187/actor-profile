@@ -1,1 +1,33 @@
 @import "tailwindcss";
+
+body {
+  background: var(--c-base);
+  color: var(--c-text);
+  font-family: var(--font-body);
+  font-size: var(--text-base);
+  line-height: 1.5;
+}
+
+.font-display {
+  font-family: var(--font-display);
+  font-stretch: var(--font-stretch-display);
+}
+
+/*
+ * The left spine: every section's heading, the first column of the credits
+ * table, and the contact block share this container so they land on one
+ * vertical rule. Sections must not add their own horizontal padding.
+ */
+.spine {
+  max-width: 72rem;
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.hairline {
+  border-color: color-mix(in srgb, var(--c-text) 16%, transparent);
+}
+
+.tabular {
+  font-variant-numeric: tabular-nums;
+}

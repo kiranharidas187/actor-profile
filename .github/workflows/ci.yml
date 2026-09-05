@@ -27,7 +27,7 @@ jobs:
         run: npm run lint
 
       - name: Validate content
-        run: npm run validate:content
+        run: npm run check:content
 
       - name: Check theme
         run: npm run check:theme
