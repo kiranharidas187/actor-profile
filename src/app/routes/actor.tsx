@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { getActorBySlug } from "../../lib/content";
 import { Hero } from "../../sections/Hero";
+import { Portrait } from "../../sections/Portrait";
 import { StatStrip } from "../../sections/StatStrip";
 import { Credits } from "../../sections/Credits";
 import { Showreel } from "../../sections/Showreel";
@@ -37,6 +38,7 @@ export default function ActorPage() {
         location={actor.location}
         headshot={actor.photos.headshot}
       />
+      {actor.photos.fullBody && <Portrait image={actor.photos.fullBody} />}
       {actor.stats && actor.stats.length > 0 && <StatStrip stats={actor.stats} />}
       <Credits credits={actor.credits} />
       {actor.showreel && <Showreel showreel={actor.showreel} actorName={actor.name} />}
