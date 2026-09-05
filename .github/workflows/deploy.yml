@@ -1,0 +1,68 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build
+        run: npm run build
+        env:
+          PAGES_BASE: "true"
+
+      # React Router's static prerender writes HTML files nested under a
+      # directory matching `basename` (build/client/actor-profile/...),
+      # while Vite emits JS/CSS/font assets at build/client/assets/ regardless
+      # of basename. GitHub Pages serves the uploaded artifact's root as the
+      # site (it applies the /actor-profile/ prefix externally), so the HTML
+      # files must sit at the artifact root alongside assets/, not nested
+      # another level inside it. Flatten before packaging the artifact.
+      - name: Flatten prerendered output to artifact root
+        run: |
+          mv build/client/actor-profile/* build/client/
+          rmdir build/client/actor-profile
+
+      - name: Create 404.html for client-side routing fallback
+        run: cp build/client/index.html build/client/404.html
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v6
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: build/client
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

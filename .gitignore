@@ -2,6 +2,6 @@ node_modules/
 dist/
 build/
 .react-router/
-graphify-out/cost.json
+graphify-out/
 *.local
 .DS_Store

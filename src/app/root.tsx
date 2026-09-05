@@ -15,7 +15,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
             colors are part of the initial HTML in both dev and the
             prerendered build — see src/theme/vite-plugin.ts for why. */}
         <style dangerouslySetInnerHTML={{ __html: themeCss }} />
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+        <link rel="icon" href={`${import.meta.env.BASE_URL}favicon.svg`} type="image/svg+xml" />
         {fontPreloadHrefs.map((href) => (
           <link key={href} rel="preload" as="font" type="font/woff2" href={href} crossOrigin="anonymous" />
         ))}
